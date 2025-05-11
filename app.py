@@ -12,7 +12,7 @@ st.set_page_config(
 @st.cache_data(ttl=300)
 def load_eo_summaries() -> pd.DataFrame:
     # 1) Hit your n8n node that returns {"texts": [ "<p>...</p>", ... ]}
-    r = requests.get("https://your-n8n-webhook.io/get_eo_texts")
+    r = requests.get("https://mackwiltrout.app.n8n.cloud/webhook-test/65895fd9-6f95-4956-a66f-9f4e9ff0dae2")
     data = r.json()["texts"]
     # Turn it into a DataFrame with one summary per row
     return pd.DataFrame({"summary_html": data})
@@ -20,7 +20,7 @@ def load_eo_summaries() -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def load_congress_summaries() -> pd.DataFrame:
     # 2) Hit your n8n node for congress summaries
-    r = requests.get("https://your-n8n-webhook.io/get_cong_texts")
+    r = requests.get("https://mackwiltrout.app.n8n.cloud/webhook-test/05723c84-2472-4041-be33-ca5157e222e1")
     data = r.json()["texts"]
     return pd.DataFrame({"summary_html": data})
 
